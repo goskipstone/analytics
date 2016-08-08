@@ -1,14 +1,31 @@
-import { default as React } from 'react'
+import { default as React, PropTypes } from 'react'
 import { Container, Toolbar, NavItem } from 'rebass'
 import { Flex } from 'reflexbox'
 
-const Navbar = () =>
-  <Toolbar backgroundColor='primary'>
-    <Container is={Flex} style={{ width: '100%' }}>
-      <NavItem>
-        Skipstone Analytics
-      </NavItem>
+const width = 115
+
+const Navbar = (props, { shadows }) =>
+  <Toolbar px={0} backgroundColor='white' style={{ boxShadow: shadows[0] }}>
+    <Container
+      is={Flex}
+      style={{ width: '100%' }}
+    >
+      <NavItem
+        style={{
+          backgroundImage: 'url(//static.skip.st/Skipstone_LtGray.svg)',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: width,
+          textIndent: -9999,
+          width
+        }}
+        children='Skipstone Analytics'
+      />
     </Container>
   </Toolbar>
+
+Navbar.contextTypes = {
+  shadows: PropTypes.array.isRequired
+}
 
 export default Navbar

@@ -5,8 +5,8 @@
     "avgQueriesBeforeAskExpert": 2,
     "avgWatchedBeforeFirstQuestion": 0.30,
     "multipleResultsFreq": 7,
-    "singleResultFreq": 10,
-    "zeroResultFreq": 8,
+    "singleResultFreq": 1,
+    "zeroResultsFreq": 8,
     "title": "A Day in The Life With Skipstone"
   },
   { 
@@ -15,8 +15,8 @@
     "avgQueriesBeforeAskExpert": 20,
     "avgWatchedBeforeFirstQuestion": 1.12,
     "multipleResultsFreq": 10,
-    "singleResultFreq": 10,
-    "zeroResultFreq": 2,
+    "singleResultFreq": 5,
+    "zeroResultsFreq": 2,
     "title": "March of Dimes"
   },
   { 
@@ -25,8 +25,8 @@
     "avgQueriesBeforeAskExpert": 6,
     "avgWatchedBeforeFirstQuestion": 0.15,
     "multipleResultsFreq": 2,
-    "singleResultFreq": 10,
-    "zeroResultFreq": 10,
+    "singleResultFreq": 8,
+    "zeroResultsFreq": 10,
     "title": "What is Send-TheDoc"
   },
   { 
@@ -35,8 +35,8 @@
     "avgQueriesBeforeAskExpert": 4,
     "avgWatchedBeforeFirstQuestion": 0.45,
     "multipleResultsFreq": 2,
-    "singleResultFreq": 10,
-    "zeroResultFreq": 6,
+    "singleResultFreq": 3,
+    "zeroResultsFreq": 6,
     "title": "Rapport Innovative Marketing"
   },
   { 
@@ -45,8 +45,8 @@
     "avgQueriesBeforeAskExpert": 3,
     "avgWatchedBeforeFirstQuestion": 3.00,
     "multipleResultsFreq": 5,
-    "singleResultFreq": 10,
-    "zeroResultFreq": 12,
+    "singleResultFreq": 6,
+    "zeroResultsFreq": 12,
     "title": "Centerra Pointe"
   }
 ]

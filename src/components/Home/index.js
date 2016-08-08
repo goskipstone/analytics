@@ -7,10 +7,6 @@ import { default as truncate } from 'truncate'
 // Order of Questions Asked in a Session
 // Number of times multiple results/no results/single result is shown per session
 
-function mapData (data, field, truncateAt = 15) {
-  return data.map(i => ({ x: truncate(i.title, truncateAt, { ellipsis: '...' }), y: i[field] }))
-}
-
 @connect(({ app: { screenSize } }) => ({ screenSize }))
 
 export default class Home extends Component {
@@ -19,6 +15,10 @@ export default class Home extends Component {
     breakpoints: PropTypes.object.isRequired,
     scale: PropTypes.array.isRequired
   };
+
+  mapData (data, field, truncateAt = 15) {
+    return data.map(i => ({ x: truncate(i.title, truncateAt, { ellipsis: '...' }), y: i[field] }))
+  }
 
   width () {
     const { screenSize } = this.props
@@ -36,42 +36,42 @@ export default class Home extends Component {
       heading: 'Average # of Questions Per Session',
       data: [{
         label: 'Average # of Questions Per Session',
-        values: mapData(data, 'avgQueries')
+        values: this.mapData(data, 'avgQueries')
       }]
     },
     {
       heading: 'Average # of Questions before Ask Expert Appears',
       data: [{
         label: 'Average # of Questions before Ask Expert Appears',
-        values: mapData(data, 'avgQueriesBeforeAskExpert')
+        values: this.mapData(data, 'avgQueriesBeforeAskExpert')
       }]
     },
     {
       heading: 'Average # of Questions before Ask Expert Appears',
       data: [{
         label: 'Average # of Questions before Ask Expert Appears',
-        values: mapData(data, 'avgWatchedBeforeFirstQuestion')
+        values: this.mapData(data, 'avgWatchedBeforeFirstQuestion')
       }]
     },
     {
       heading: 'Multiple Results Frequency',
       data: [{
         label: 'Multiple Results Frequency',
-        values: mapData(data, 'multipleResultsFreq')
+        values: this.mapData(data, 'multipleResultsFreq')
       }]
     },
     {
       heading: 'Single Results Frequency',
       data: [{
         label: 'Single Results Frequency',
-        values: mapData(data, 'singleResultsFreq')
+        values: this.mapData(data, 'singleResultFreq')
       }]
     },
     {
       heading: 'Zero Results Frequency',
       data: [{
         label: 'Zero Results Frequency',
-        values: mapData(data, 'zeroResultsFreq')
+        values: this.mapData(data, 'zeroResultsFreq')
       }]
     }
   ]
