@@ -1,0 +1,155 @@
+{
+  "name": "@leadgrabr/webpack-static-boilerplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.js",
+  "devDependencies": {
+    "@leadgrabr/brand-badges": "0.0.5",
+    "@leadgrabr/lead-form": "0.0.11",
+    "@leadgrabr/testimonials": "0.3.0",
+    "autobind-decorator": "^1.3.3",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "better-npm-run": "0.0.10",
+    "better-react-spinkit": "2.0.0-3",
+    "can-use-dom": "^0.1.0",
+    "clean-webpack-plugin": "^0.1.10",
+    "color": "^0.11.3",
+    "commitizen": "^2.8.4",
+    "css-loader": "^0.23.1",
+    "cz-conventional-changelog": "1.1.6",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "ghooks": "^1.3.2",
+    "joi": "^9.0.4",
+    "joiful-react-forms": "0.1.9",
+    "json-loader": "^0.5.4",
+    "jsx-control-statements": "^3.1.2",
+    "node-sass": "^3.5.3",
+    "react": "^15.3.0",
+    "react-addons-update": "^15.3.0",
+    "react-d3-components": "^0.6.4",
+    "react-dom": "^15.3.0",
+    "react-google-maps": "^4.9.1",
+    "react-helmet": "^3.0.2",
+    "react-icons": "^2.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.1",
+    "react-router-redux": "^4.0.4",
+    "rebass": "^0.3.0",
+    "redux": "^3.3.1",
+    "redux-async-connect": "^1.0.0-rc4",
+    "redux-await": "^5.0.1",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.10",
+    "redux-logger": "^2.6.1",
+    "redux-router": "^2.1.2",
+    "redux-segment": "^0.7.2",
+    "redux-simplestorage": "1.0.1",
+    "reflexbox": "^2.1.0",
+    "sass-loader": "^4.0.0",
+    "scroll-behavior": "^0.7.0",
+    "serialize-javascript": "^1.2.0",
+    "sitemap-webpack-plugin": "^0.1.0",
+    "small-medium-large-xlarge": "^1.0.3",
+    "standard": "^7.0.1",
+    "standard-loader": "^5.0.0",
+    "static-site-generator-webpack-plugin": "^2.0.1",
+    "style-loader": "^0.13.1",
+    "superagent": "2.1.0",
+    "truncate": "^2.0.0",
+    "url-loader": "^0.5.7",
+    "validate-commit-msg": "^2.5.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "why-did-you-update": "0.0.8"
+  },
+  "scripts": {
+    "start": "npm run start-dev",
+    "lint": "standard",
+    "dev": "better-npm-run start-dev",
+    "build-dev": "better-npm-run build-dev",
+    "deploy-dev": "aws s3 sync ./dist s3://dev.annarbor.pictures --exclude '.DS_Store' --profile home"
+  },
+  "betterScripts": {
+    "start-dev": {
+      "command": "webpack-dev-server --progress --hot --colors --history-api-fallback --display-error-details",
+      "env": {
+        "API_ENDPOINT": "http://api.leadgrabr.com/api/v1",
+        "BABEL_ENV": "development",
+        "DEVELOPMENT": true,
+        "DEVTOOLS": true,
+        "GOOGLE_MAPS_APIKEY": "AIzaSyCgDmnVgrSncTpR8vgsyEKSBUm1iXHM7Y4"
+      }
+    },
+    "build-prod": {
+      "command": "webpack -p",
+      "env": {
+        "API_ENDPOINT": "http://api.leadgrabr.com/api/v1",
+        "BABEL_ENV": "production",
+        "NODE_ENV": "production",
+        "GOOGLE_MAPS_APIKEY": "AIzaSyCgDmnVgrSncTpR8vgsyEKSBUm1iXHM7Y4"
+      }
+    }
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "validate-commit-msg"
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": [
+        "issue",
+        "master",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": ""
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeadGrabr/webpack-static-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeadGrabr/webpack-static-boilerplate/issues"
+  },
+  "homepage": "https://github.com/LeadGrabr/webpack-static-boilerplate#readme",
+  "standard": {
+    "globals": [
+      "$",
+      "If",
+      "Else",
+      "Choose",
+      "When",
+      "Otherwise"
+    ],
+    "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "jsx-control-statements",
+      "transform-decorators-legacy"
+    ]
+  }
+}
