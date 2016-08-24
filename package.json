@@ -1,5 +1,5 @@
 {
-  "name": "@leadgrabr/webpack-static-boilerplate",
+  "name": "@skipstone/analytics",
   "version": "0.0.1",
   "description": "",
   "main": "webpack.config.js",
@@ -37,6 +37,7 @@
     "react-d3-components": "^0.6.4",
     "react-dom": "^15.3.0",
     "react-google-maps": "^4.9.1",
+    "react-headroom": "^2.1.2",
     "react-helmet": "^3.0.2",
     "react-icons": "^2.2.1",
     "react-redux": "^4.4.5",
@@ -76,26 +77,20 @@
     "lint": "standard",
     "dev": "better-npm-run start-dev",
     "build-dev": "better-npm-run build-dev",
-    "deploy-dev": "aws s3 sync ./dist s3://dev.annarbor.pictures --exclude '.DS_Store' --profile home"
+    "deploy-dev": "npm run build-dev && aws s3 sync ./dist s3://skipstone-analytics --exclude '.DS_Store' --profile skipstone --cache-control 'max-age=604800' --expires 2100-01-01T00:00:00Z"
   },
   "betterScripts": {
     "start-dev": {
       "command": "webpack-dev-server --progress --hot --colors --history-api-fallback --display-error-details",
       "env": {
-        "API_ENDPOINT": "http://api.leadgrabr.com/api/v1",
-        "BABEL_ENV": "development",
         "DEVELOPMENT": true,
-        "DEVTOOLS": true,
-        "GOOGLE_MAPS_APIKEY": "AIzaSyCgDmnVgrSncTpR8vgsyEKSBUm1iXHM7Y4"
+        "DEVTOOLS": true
       }
     },
-    "build-prod": {
+    "build-dev": {
       "command": "webpack -p",
       "env": {
-        "API_ENDPOINT": "http://api.leadgrabr.com/api/v1",
-        "BABEL_ENV": "production",
-        "NODE_ENV": "production",
-        "GOOGLE_MAPS_APIKEY": "AIzaSyCgDmnVgrSncTpR8vgsyEKSBUm1iXHM7Y4"
+        "NODE_ENV": "production"
       }
     }
   },

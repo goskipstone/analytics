@@ -28,7 +28,7 @@ export default class Home extends Component {
         return breakpoints.large
       default:
         return breakpoints[screenSize || 'small']
-    } 
+    }
   }
 
   charts = [

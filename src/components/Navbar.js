@@ -1,11 +1,12 @@
 import { default as React, PropTypes } from 'react'
 import { Container, Toolbar, NavItem } from 'rebass'
 import { Flex } from 'reflexbox'
+import { default as Headroom } from 'react-headroom'
 
 const width = 115
 
 const Navbar = (props, { shadows }) =>
-  <Toolbar px={0} backgroundColor='white' style={{ boxShadow: shadows[0] }}>
+  <Toolbar is={Headroom} px={0} backgroundColor='white' style={{ boxShadow: shadows[0] }}>
     <Container
       is={Flex}
       style={{ width: '100%' }}
