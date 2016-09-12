@@ -87,8 +87,8 @@ export default class Home extends Component {
             <BarChart
               data={data}
               height={400}
-              width={width}
-              margin={{ top: scale[1], bottom: scale[2], left: scale[2], right: scale[1] }}
+              width={width - (width / 25)}
+              margin={{ top: scale[1], bottom: scale[2], left: scale[3], right: 0 }}
             />
           </Section>
         )}
