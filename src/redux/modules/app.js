@@ -1,4 +1,4 @@
-import ApiClient from '../../apiClient'
+import { default as ApiClient } from 'api-bro'
 import { AWAIT_MARKER } from 'redux-await'
 import { getScreenSize } from 'small-medium-large-xlarge'
 import { breakpoints } from 'components/Theme'

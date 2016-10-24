@@ -1,14 +1,21 @@
-import { default as React, Component, PropTypes } from 'react'
-import { Container, Section, SectionHeader } from 'rebass'
-import { default as data } from './data'
-import { BarChart } from 'react-d3-components'
+
 import { connect } from 'react-redux'
+import { default as data } from './data'
+// import { asyncConnect } from 'redux-connect'
+import { BarChart } from 'react-d3-components'
 import { default as truncate } from 'truncate'
+import { Container, Section, SectionHeader } from 'rebass'
+import { default as React, Component, PropTypes } from 'react'
 // Order of Questions Asked in a Session
 // Number of times multiple results/no results/single result is shown per session
 
+// @asyncConnect([{
+//   key: 'analytics',
+//   promise: ({ location: { query }, helpers: { client } }) => {
+//     return client.get(`parentMediaReport/${query.org}`)
+//   }
+// }])
 @connect(({ app: { screenSize } }) => ({ screenSize }))
-
 export default class Home extends Component {
 
   static contextTypes = {
@@ -81,8 +88,8 @@ export default class Home extends Component {
     const width = this.width()
     return (
       <Container>
-        {this.charts.map(({ heading, data }) =>
-          <Section>
+        {this.charts.map(({ heading, data }, key) =>
+          <Section key={key}>
             <SectionHeader heading={heading} href='#' />
             <BarChart
               data={data}

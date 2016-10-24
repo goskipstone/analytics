@@ -1,10 +1,18 @@
+
 import React, { Component, PropTypes } from 'react'
+import { asyncConnect } from 'redux-connect'
 import { BottomBar, Input, Navbar, Theme } from 'components'
 import { default as Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
 import { setScreenSize } from 'redux/modules/app'
 import { debounce } from 'lodash'
 
+@asyncConnect([
+  {
+    key: 'token',
+    promise: ({ helpers: { client } }) => client.get('userToken/testadmin?password=Skipstone20')
+  }
+])
 @connect(() => ({}), { setScreenSize })
 
 export default class App extends Component {

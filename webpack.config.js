@@ -1,3 +1,4 @@
+
 const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -97,8 +98,7 @@ module.exports = {
         'DEVELOPMENT': JSON.stringify(process.env.DEVELOPMENT),
         'DEVTOOLS': JSON.stringify(process.env.DEVTOOLS),
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'AUDIENCE': JSON.stringify(process.env.AUDIENCE),
-        'GOOGLE_MAPS_APIKEY': JSON.stringify(process.env.GOOGLE_MAPS_APIKEY)
+        'API_PATH': JSON.stringify(process.env.API_PATH)
       }
     })
   ]
