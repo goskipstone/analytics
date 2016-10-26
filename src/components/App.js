@@ -1,58 +1,14 @@
 
-import React, { Component, PropTypes } from 'react'
-import { asyncConnect } from 'redux-connect'
-import { BottomBar, Input, Navbar, Theme } from 'components'
-import { default as Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { setScreenSize } from 'redux/modules/app'
-import { debounce } from 'lodash'
+import { asyncConnect } from 'redux-connect'
+import { default as Helmet } from 'react-helmet'
+import React, { Component } from 'react'
+import { BottomBar, Navbar, Theme } from 'components'
+import { getToken, GET_TOKEN } from 'redux/modules/app'
 
-@asyncConnect([
-  {
-    key: 'token',
-    promise: ({ helpers: { client } }) => client.get('userToken/testadmin?password=Skipstone20')
-  }
-])
-@connect(() => ({}), { setScreenSize })
-
+@asyncConnect([{ key: GET_TOKEN, promise: getToken }])
+@connect(({ app: { token } }) => ({ token }))
 export default class App extends Component {
-
-  static propTypes = {
-    children: PropTypes.node
-  };
-
-  static childContextTypes = {
-    joifulReactForms: PropTypes.object
-  };
-
-  getChildContext () {
-    return {
-      joifulReactForms: {
-        JoifulInput: {
-          types: {
-            text: Input
-          }
-        }
-      }
-    }
-  }
-
-  constructor () {
-    super()
-    this.setScreenSize = debounce(this.setScreenSize.bind(this), 100)
-  }
-
-  componentDidMount () {
-    this.setScreenSize()
-    window.addEventListener('resize', this.setScreenSize)
-  }
-
-  setScreenSize () {
-    const height = () => window.innerHeight || $(window).height()
-    const width = () => window.innerWidth || $(window).width()
-    this.props.setScreenSize({ height: height(), width: width() })
-  }
-
   render () {
     return (
       <div>

@@ -98,7 +98,8 @@ module.exports = {
         'DEVELOPMENT': JSON.stringify(process.env.DEVELOPMENT),
         'DEVTOOLS': JSON.stringify(process.env.DEVTOOLS),
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'API_PATH': JSON.stringify(process.env.API_PATH)
+        'API_PATH': JSON.stringify(process.env.API_PATH),
+        'REDUX_PREFIX': JSON.stringify(process.env.REDUX_PREFIX)
       }
     })
   ]

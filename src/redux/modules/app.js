@@ -1,48 +1,32 @@
-import { default as ApiClient } from 'api-bro'
-import { AWAIT_MARKER } from 'redux-await'
-import { getScreenSize } from 'small-medium-large-xlarge'
-import { breakpoints } from 'components/Theme'
-const SCREEN_DIMENSIONS = 'a2pix/SCREEN_DIMENSIONS_CHANGE'
-const SUBMIT_LEAD = 'a2pix/SUBMIT_LEAD'
-const client = new ApiClient()
+
+const { REDUX_PREFIX } = process.env
+import { default as client } from 'helpers/api'
+export const GET_TOKEN = `${REDUX_PREFIX}/app/getToken`
 
 const intitialState = {
-  height: 0,
-  width: 0
+  token: null
 }
 
-export function setScreenSize ({ height, width }) {
-  return {
-    type: SCREEN_DIMENSIONS,
-    payload: {
-      height,
-      width
-    }
+export function getToken ({ store }) {
+  const { token } = store.getState()
+  if (token) {
+    return null
   }
-}
-
-export function createLead (data = {}) {
-  return {
-    type: SUBMIT_LEAD,
-    AWAIT_MARKER,
-    payload: {
-      [SUBMIT_LEAD]: client.post('Lead', {
-        data: {
-          ...data,
-          _audience: process.env.AUDIENCE
-        }
-      })
-    }
-  }
+  return client.get('userToken/testadmin?password=Skipstone20')
 }
 
 export function reducer (state = intitialState, action) {
   switch (action.type) {
-    case SCREEN_DIMENSIONS:
-      return {
-        ...state,
-        ...action.payload,
-        screenSize: getScreenSize(action.payload.width, breakpoints)
+    case '@redux-conn/LOAD_SUCCESS':
+      const { data, key } = action.payload
+      switch (key) {
+        case GET_TOKEN:
+          return {
+            ...state,
+            token: data.token
+          }
+        default:
+          return state
       }
     default:
       return state
