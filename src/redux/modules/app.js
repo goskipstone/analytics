@@ -7,14 +7,6 @@ const intitialState = {
   token: null
 }
 
-export function getToken ({ store }) {
-  const { token } = store.getState()
-  if (token) {
-    return null
-  }
-  return client.get('userToken/testadmin?password=Skipstone20')
-}
-
 export function reducer (state = intitialState, action) {
   switch (action.type) {
     case '@redux-conn/LOAD_SUCCESS':
@@ -31,4 +23,12 @@ export function reducer (state = intitialState, action) {
     default:
       return state
   }
+}
+
+export function getToken ({ store }) {
+  const { token } = store.getState()
+  if (token) {
+    return null
+  }
+  return client.get('userToken/testadmin?password=Skipstone20')
 }

@@ -103,6 +103,14 @@ export default class Theme extends Component {
         },
         Select: {
           color: colors.darkGray
+        },
+        Panel: {
+          borderColor: colors.gray
+        },
+        PanelHeader: {
+          borderColor: colors.gray,
+          borderWidth: 1,
+          borderStyle: 'solid'
         }
       },
       scale,
@@ -148,7 +156,6 @@ export default class Theme extends Component {
               color: ${colors.darkGray};
               font-weight: ${fontWeightBase};
             }
-
             .Input.isInvalid .Text {
               margin-top: ${scale[1]}px !important;
             }

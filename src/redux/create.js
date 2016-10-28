@@ -1,12 +1,14 @@
-import { createStore as _createStore, applyMiddleware, compose } from 'redux'
+
 import storageMiddleware from 'redux-simplestorage'
-import { middleware as awaitMiddleware } from 'redux-await'
 import { routerMiddleware } from 'react-router-redux'
 import reducer from './modules/reducer'
 import { DevTools } from '../components'
 import { persistState } from 'redux-devtools'
 import createLogger from 'redux-logger'
 import { createTracker } from 'redux-segment'
+import { responsiveStoreEnhancer } from 'redux-responsive'
+import { middleware as awaitMiddleware } from 'redux-await'
+import { createStore as _createStore, applyMiddleware, compose } from 'redux'
 
 export default function createStore (browserHistory) {
   const tracker = createTracker()
@@ -24,12 +26,16 @@ export default function createStore (browserHistory) {
   let finalCreateStore
   if (typeof window !== 'undefined' && process.env.DEVELOPMENT && process.env.DEVTOOLS) {
     finalCreateStore = compose(
+      responsiveStoreEnhancer,
       applyMiddleware(...middleware),
       window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
       persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
     )(_createStore)
   } else {
-    finalCreateStore = applyMiddleware(...middleware)(_createStore)
+    finalCreateStore = compose(
+      responsiveStoreEnhancer,
+      applyMiddleware(...middleware)
+    )(_createStore)
   }
 
   const store = finalCreateStore(reducer)
