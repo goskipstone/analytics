@@ -53,7 +53,7 @@ export default enhance(props => {
     .attr('y', d => y(props.y(d)))
     .attr('height', d => height - y(props.y(d)))
     .on('mouseover', d => props.setHighlight(d))
-    .on('mouseleave', () => props.setHighlight(null))
+    // .on('mouseleave', () => props.setHighlight(null))
 
   chart.append('g')
     .attr('transform', `translate(0, ${height})`)
