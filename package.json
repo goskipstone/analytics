@@ -96,7 +96,11 @@
     "build-dev": {
       "command": "webpack -p",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "DEVELOPMENT": false,
+        "DEVTOOLS": false,
+        "API_PATH": "https://qa-api.skipstone.marketing/api/",
+        "REDUX_PREFIX": "skipstone/analytics"
       }
     }
   },
